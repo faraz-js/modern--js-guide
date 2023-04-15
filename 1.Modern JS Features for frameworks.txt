@@ -1,0 +1,175 @@
+Reference: https://www.youtube.com/watch?v=-Z0i100x0mc
+
+
+1. let and const:
+    
+    let='faraz';
+    let='arbaz';
+    
+    const= faraz; this cannot be changed sinceit is constant
+
+2.short hand object assignment: //smart way to assign values to the objects keys
+
+    OLD JS WAY:
+
+    const name= 'faraz'
+    const arbaz = 'arbaz
+
+    const youtube = {
+
+        name: name,         //the first 'name' is the object key and the second 'name' is the const which has 'faraz' stored in it. 
+        channnel: channel  //same as name
+    }
+    
+    NEW JS WAY:
+
+    const name= 'faraz'
+    const arbaz = 'arbaz
+
+    const youtube = {
+
+        name,         //if the object key name and the const name is same then we can write it this way now. 
+        channnel     //same as name
+    }
+
+3.Destructuring assignment:  //extract values from objects and arrays 
+
+    OLD JS WAY FOR OBJECTS:
+
+    const name = {
+        first: 'Bruce',
+        last: 'Wayne'
+    }
+
+    const first = name.first; //here the value of the property 'first' of the the object called 'name' 
+                             //is being assigned to const called 'first'
+    
+    const last = name.last;  //same as up
+
+    NEW JS WAY FOR OBJECTS:
+
+    const name = {
+        first: 'Bruce',
+        last: 'Wayne'
+    }
+
+    const {first, last} = name;  //name object object holds two properties, 'first ' and 'last' and their values are being stored in 
+                                //const first and last repectivley or correspondingly.
+
+    const {first: f, last: l} = name;  //additonally the properties of 'name can alse be assigned to aliases f and l.
+                                      // f holds the value of name.first while l holds the value of name.last
+
+    OLD JS WAY FOR ARRAYS:
+
+    const name = ['Bruce' , 'Wayne'];
+
+    const first = name[0];  //the const 'first' stores the first instance of the array
+    const last = name[1]    //it holds second instance
+
+    NEW JS WAY FOR ARRAYS:
+
+    const name = ['Bruce' , 'Wayne'];  
+
+    const [first, last] = name; //first and las thold the repective instances of the 'name' array
+
+4.Spread Syntax: //helps make copies of objects/arrays, array concatenation, object merging.
+
+    ARRAY/OBJECT COPY:
+
+    const arr = [1, 2, 3]
+    const arrCopy = [...arr] //now arrCopy holds all the vales of 'arr' and furthur more values can also be added
+
+    const obj = {first: 'Bruce', last: 'Wayne'}
+    const ObjCopy = {...obj};  //now ObjCopy holds all the element of obj in it.
+
+    ARRAY CONCATENATION:
+
+    let arr1 = [0, 1, 2]
+    let arr2 = [3, 4, 5]
+
+    arr1 =  [....arr2, ...arr1]   //arr1 is now [3, 4, 5, 0, 1, 2]
+
+    OBJECT MERGE:
+
+    let obj1 = {foo: 'bar', x: 42};
+    let obj1 = {foo: 'baz', y: 13};
+
+    let mergedObj = {...obj1, ...obj2} //now mergedObj = {foo: "baz", x: 42, y:13} i think js stores the second value for 'foo' 
+                                      //since it is the common one among the both of the objects
+
+5.Optional Chaining: helps for a safer console log without any errors such as undefined represented by `?.`
+
+    OBJECT:
+    const person = {
+        name:'Bruce Wayne',
+        details: {
+            age: 28,
+            address:{
+                city:gotham
+            }
+        }
+    }
+
+    OLD JS WAY to console.log:
+    console.log(
+        person.details &&
+        person.details.address &&
+        person.details.address.city
+    )
+    New JS WAY to console.log:
+    console.log(person?.deatils?.address?.city)  //the ? gives it a flexibilty option to check if the object exists
+
+    ARRAY:
+    const person ={
+        name: 'Bruce Wayne',
+        hobbies: [
+            {
+             name: 'Crime Fighting'
+            }
+        ]
+    }
+
+    OLD JS WAY to console.log:
+    console.log(
+        person.hobbies &&
+        person.hobbies.length &&
+        person.hobbies[0] &&
+        person.hobbies[0].name
+    )
+
+    NEW JS WAY to console.log
+    console.log(person?.hobbies?.[0]?.name)
+
+
+6. Nullish Coalesing Operator: //it is the use of ?? instead of || (logical OR Operator)
+    OLD JS LOGICAL OR WAY:
+
+    const name = 'faraz'
+    const username = name || 'Guest'
+    console.log(username)  //logs faraz 
+ 
+    const name = 'null'
+    const username = name || 'Guest'
+    console.log(username)  //logs faraz
+    
+    const name = '' //empty string                             
+    const username = name || 'Guest'                         //OR OPERATOR DOESNT WORK WITH EMPTY STRING ON THE L.H.S  
+    console.log(username)  //logs Guest instead of ''                  
+    
+    const count = 0                                         
+    const views = count || 'N/A'                            //OR OPERATOR DOESNT WORK WITH EMPTY STRING ON THE L.H.S      
+    console.log(views)  //logs N/A instead of 0 even if count = 0  is valid 
+
+
+    NULLISH COALESING OPERATOR WAY:
+
+    const name = '' //empty string                             
+    const username = name ?? 'Guest'                        
+    console.log(username)  //logs  ''   (correct)               
+    
+    const count = 0                                         
+    const views = count ?? 'N/A'                                 
+    console.log(views)  //logs 0    (correct)  
+
+
+    ...continued 11:45
